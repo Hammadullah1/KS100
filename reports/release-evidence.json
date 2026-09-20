@@ -5,5 +5,8 @@
   "manual_workflow_verified": false,
   "deployment_smoke_verified": false,
   "physical_android_verified": false,
-  "reason": "No GitHub repository/account or authorized deployment has been configured."
+  "repository_url": "https://github.com/Hammadullah1/KS100",
+  "initial_commit": "dada7737df38dd199581d4d9dab1e9249d2b50ed",
+  "initial_ci_url": "https://github.com/Hammadullah1/KS100/actions/runs/35518096706",
+  "reason": "Source uploaded and CI triggered. Website deployment, private state and live forecasting are not yet configured."
 }

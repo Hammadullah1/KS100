@@ -54,7 +54,7 @@ The current snapshot is **the index**, not prices for all 100 companies. Extendi
 
 The research workflow now has an explicit manual `snapshot` mode. It reads `research-inputs/kse100_daily.csv` and optional `research-inputs/brent_fred.csv` in the separate private state repository. It writes results to a run-specific private directory and never publishes them or promotes the model. Scheduled approved-data research retains its existing behavior. Failed research is reported as failure after diagnostics are preserved.
 
-Repository URL/account access are still needed. No remote or GitHub CLI is configured on this machine. The requested repository has not been created or pushed, and no hosted run is claimed.
+The project was subsequently pushed to [Hammadullah1/KS100](https://github.com/Hammadullah1/KS100), with `origin` connected and `main` tracking the remote branch. The initial push started [hosted CI](https://github.com/Hammadullah1/KS100/actions/runs/35518096706). Website deployment, private state, enabled schedules and successful live forecasts remain separate setup steps; none is inferred from a successful push.
 
 Standard GitHub-hosted runners in public repositories are free under the currently documented [Actions billing rules](https://docs.github.com/en/billing/concepts/product-billing/github-actions). Use standard Ubuntu runners, bounded runtimes and storage, and review actual account settings before enabling schedules. Keep private source data outside the public code repository. See [the runbook](RUNBOOK.md) for account, state, publication and recovery settings.
 

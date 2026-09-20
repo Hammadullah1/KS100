@@ -1,6 +1,6 @@
 # Operations and release runbook
 
-No remote repository, successful hosted workflow or deployed URL is recorded yet. Local checks do not establish deployment.
+The project is uploaded to [Hammadullah1/KS100](https://github.com/Hammadullah1/KS100). The first [CI run](https://github.com/Hammadullah1/KS100/actions/runs/35518096706) was started by the initial push. A deployed URL and successful hosted release are not yet recorded. CI is separate from deployment and daily forecasting.
 
 ## Required accounts and settings - after local review
 
