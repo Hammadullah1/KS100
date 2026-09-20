@@ -1,0 +1,18 @@
+schema_version: '1'
+instruments:
+  - id: PSX:KSE100:TR
+    symbol: KSE100
+    name: KSE-100
+    kind: index
+    return_basis: official_total_return
+    currency: PKR
+    source: psx
+  - id: PSX:KSE100PR:PR
+    symbol: KSE100PR
+    name: KSE-100 Price Return
+    kind: index
+    return_basis: official_price_return
+    currency: PKR
+    source: psx
+watchlist: []
+watchlist_reason: Dated membership, liquidity and corporate-action histories are not yet verified.

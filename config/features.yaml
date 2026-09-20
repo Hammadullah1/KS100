@@ -1,0 +1,13 @@
+version: price-v1
+price_windows: [1, 5, 20]
+min_history_sessions: 21
+max_extreme_return: 0.25
+groups:
+  price: {enabled: true}
+  brent: {enabled: false, series: PET.RBRTE.D, max_age_days: 7}
+  fx: {enabled: false, max_age_days: 7}
+  rates: {enabled: false, max_age_days: 90}
+  flows: {enabled: false, max_age_days: 7}
+  inflation: {enabled: false, max_age_days: 45}
+  news: {enabled: false, max_age_days: 7}
+interactions: [brent_x_fx, rate_x_bank, fx_x_exporter]

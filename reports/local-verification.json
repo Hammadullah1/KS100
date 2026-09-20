@@ -1,0 +1,42 @@
+{
+  "recorded_at": "2026-09-19T15:16:58.077352+00:00",
+  "scope": "local software verification only",
+  "python": {
+    "tests": 35,
+    "failures": 0,
+    "report": "reports/pytest.xml",
+    "ruff": "passed",
+    "format": "passed"
+  },
+  "frontend": {
+    "unit_tests": 6,
+    "browser_tests": 5,
+    "browser_failures": 0,
+    "report": "reports/browser-results.json",
+    "production_build": "passed",
+    "production_artifact_scan": "passed",
+    "schema_drift": false
+  },
+  "reproducibility": {
+    "python": "fresh .cache/clean-verify environment, uv sync --locked --offline, 38 packages",
+    "javascript": "recreated node_modules with pnpm 10.34.5 install --frozen-lockfile; 131 packages",
+    "offline_javascript_attempt": "missing cached tarball; exact locked packages subsequently fetched successfully",
+    "fixture_sessions": 70,
+    "fixture_snapshot": "efd575966d8774321028c30485918396cbf6ab2974404531c620261bde8e0be9",
+    "fixture_note": "Six future open sessions intentionally lack bars; synthetic data only.",
+    "backup_sha256": "36801650a166431c4ef946fb663012e5fe29561a09b19105ad3940ed1b8e46c2",
+    "restore_hash_validation": "passed"
+  },
+  "screenshots": {
+    "dashboard-320.png": "dd328d867ec11af99476821792158d02911c308bf77de509457fc3406eabf4f5",
+    "dashboard-360.png": "50ffabd43af2c33d4c3599e3aaee9e4b0af99b113901ca833bb7ad41752290d7",
+    "dashboard-393.png": "d15a25bf398b329d4dbdb93252d9aaf3cd1075600716e0c37c67d47a55edea0b",
+    "expired-cache.png": "40a7e4e2ac7755b8591bea99cbac9d48be2915625f49ceb485838a3288f08020",
+    "offline.png": "0bb096ae1b7f4c28a5a09929def37ae4234a5a3ff8de8b38e43c552155792bed"
+  },
+  "live_data_verified": false,
+  "production_model": null,
+  "market_accuracy": null,
+  "deployed_url": null,
+  "physical_android_verified": false
+}

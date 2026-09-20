@@ -1,0 +1,14 @@
+version: snapshot-research-v1
+# All dates in the current snapshot have already been inspected in earlier research.
+evidence_status: previously_observed_history_exploratory
+horizons: [1, 5]
+development_dates: 252
+evaluation_dates: 252
+refresh_dates: 21
+fit_window_dates: 756
+calibration_dates: 63
+minimum_fit_dates: 300
+recent_baseline_dates: 126
+bootstrap_replicates: 500
+selection_metric: brier
+production_eligible: false

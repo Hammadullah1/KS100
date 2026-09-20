@@ -1,0 +1,14 @@
+{
+  "real_market_data_verified": false,
+  "market_model_evaluated": false,
+  "production_model": null,
+  "real_forecasts_issued": 0,
+  "prospective_matured_outcomes": 0,
+  "neural_challenger": {
+    "status": "deferred",
+    "reason": "No permitted timestamped news corpus or measured cheap-feature advantage."
+  },
+  "financial_accuracy": null,
+  "financial_coverage": null,
+  "demonstrated_forecasting_advantage": null
+}

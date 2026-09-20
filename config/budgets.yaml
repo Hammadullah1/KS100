@@ -1,0 +1,15 @@
+schema_version: '1'
+paid_usage_allowed: false
+daily_timeout_minutes: 20
+research_timeout_minutes: 45
+daily_target_seconds: 300
+monthly_reserved_minutes: 1800
+scheduled_job_cap_minutes: 1500
+ci_and_manual_allowance_minutes: 300
+state_max_bytes: 100000000
+bundle_max_bytes: 2000000
+http_timeout_seconds: 20
+http_attempts: 3
+max_download_bytes: 5000000
+account_verified: false
+schedules_enabled: false

@@ -1,0 +1,9 @@
+{
+  "status": "pending",
+  "workflow_url": null,
+  "deployed_url": null,
+  "manual_workflow_verified": false,
+  "deployment_smoke_verified": false,
+  "physical_android_verified": false,
+  "reason": "No GitHub repository/account or authorized deployment has been configured."
+}

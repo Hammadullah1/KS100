@@ -1,0 +1,2 @@
+import {defineConfig,devices} from '@playwright/test';
+export default defineConfig({testDir:'./tests/browser',timeout:30000,use:{baseURL:'http://127.0.0.1:4173',...devices['Pixel 7'],browserName:'chromium'},webServer:{command:'npm run preview -- --port 4173',url:'http://127.0.0.1:4173',reuseExistingServer:!process.env.CI},reporter:[['json',{outputFile:'../reports/browser-results.json'}],['list'],['html',{open:'never'}]]});

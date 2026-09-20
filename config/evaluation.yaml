@@ -1,0 +1,27 @@
+version: protocol-v2
+horizons: [1, 5]
+initial_fit_dates: 504
+development_block_dates: 63
+rolling_block_dates: 63
+final_test_dates: 252
+lightgbm_trials_max: 20
+lightgbm_trials_planned: 1
+neural_variants_max: 3
+bootstrap_replicates: 500
+bootstrap_block_dates: [5, 10, 20]
+seed: 731
+threshold_candidates: [0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9]
+# Exploratory threshold fitting in the purged 63-date selection block.
+# These counts do not establish a validated signal or an accuracy claim.
+selection_tuning:
+  minimum_selected: 20
+  minimum_selected_dates: 20
+# The independent final-test claim requirements remain unchanged.
+minimum_selected: 200
+minimum_selected_dates: 100
+minimum_coverage: 0.1
+required_lower_bound: 0.8
+maximum_ece: 0.1
+refresh: weekly_candidate_only_manual_promotion
+neural_enabled: false
+neural_reason: No permitted, timestamped news dataset or measured cheap-feature gain; simpler branch retained pending evidence.

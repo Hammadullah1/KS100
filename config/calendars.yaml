@@ -1,0 +1,8 @@
+schema_version: '1'
+timezone: Asia/Karachi
+live_calendar: null
+coverage: unknown
+policy: Explicit dated exchange sessions and closures only. Never infer live sessions from weekdays.
+evidence:
+  - https://www.psx.com.pk/psx/exchange/general/trading-hours
+  - https://www.psx.com.pk/psx/exchange/general/calendar-holidays

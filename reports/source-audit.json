@@ -1,0 +1,106 @@
+{
+  "status": "blocked",
+  "reviewed_at": "2026-09-18",
+  "sources": {
+    "psx": {
+      "enabled": false,
+      "permissions": {
+        "collection": "unknown",
+        "private_storage": "unknown",
+        "training": "unknown",
+        "public_raw": "unknown",
+        "public_derived": "unknown"
+      },
+      "blocker": "permitted sample and dated rights evidence"
+    },
+    "corporate_actions": {
+      "enabled": false,
+      "permissions": {
+        "collection": "unknown",
+        "private_storage": "unknown",
+        "training": "unknown",
+        "public_raw": "unknown",
+        "public_derived": "unknown"
+      },
+      "blocker": "permitted sample and dated rights evidence"
+    },
+    "membership": {
+      "enabled": false,
+      "permissions": {
+        "collection": "unknown",
+        "private_storage": "unknown",
+        "training": "unknown",
+        "public_raw": "unknown",
+        "public_derived": "unknown"
+      },
+      "blocker": "permitted sample and dated rights evidence"
+    },
+    "sbp": {
+      "enabled": false,
+      "permissions": {
+        "collection": "unknown",
+        "private_storage": "unknown",
+        "training": "unknown",
+        "public_raw": "unknown",
+        "public_derived": "unknown"
+      },
+      "blocker": "permitted sample and dated rights evidence"
+    },
+    "eia": {
+      "enabled": false,
+      "permissions": {
+        "collection": "approved",
+        "private_storage": "approved",
+        "training": "approved",
+        "public_raw": "approved",
+        "public_derived": "approved"
+      },
+      "blocker": "API key, live shape check and historical release evidence"
+    },
+    "fred": {
+      "enabled": false,
+      "permissions": {
+        "collection": "unknown",
+        "private_storage": "unknown",
+        "training": "unknown",
+        "public_raw": "unknown",
+        "public_derived": "unknown"
+      },
+      "blocker": "permitted sample and dated rights evidence"
+    },
+    "nccpl": {
+      "enabled": false,
+      "permissions": {
+        "collection": "unknown",
+        "private_storage": "unknown",
+        "training": "unknown",
+        "public_raw": "unknown",
+        "public_derived": "unknown"
+      },
+      "blocker": "permitted sample and dated rights evidence"
+    },
+    "pbs": {
+      "enabled": false,
+      "permissions": {
+        "collection": "unknown",
+        "private_storage": "unknown",
+        "training": "unknown",
+        "public_raw": "unknown",
+        "public_derived": "unknown"
+      },
+      "blocker": "permitted sample and dated rights evidence"
+    },
+    "disclosures": {
+      "enabled": false,
+      "permissions": {
+        "collection": "unknown",
+        "private_storage": "unknown",
+        "training": "unknown",
+        "public_raw": "unknown",
+        "public_derived": "unknown"
+      },
+      "blocker": "permitted sample and dated rights evidence"
+    }
+  },
+  "reason": "Free permitted PSX historical data and public forecast rights are not verified."
+}
