@@ -5,3 +5,6 @@
 @media(prefers-reduced-motion:no-preference){button,a{transition:background-color var(--fast) ease-out,color var(--fast) ease-out}}
 
 .global-horizon{display:flex;justify-content:flex-end;margin-bottom:24px}th small{display:block;font-weight:400;color:var(--muted);margin-top:4px}
+
+/* Switch paired foreground/background selection colors atomically to preserve contrast. */
+.workspace>nav>button,.segmented button{transition:none}
