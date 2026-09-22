@@ -2,7 +2,7 @@
 
 A local Python research pipeline and Android-installable React PWA implementing [CODEX_BUILD_PLAN.md](CODEX_BUILD_PLAN.md).
 
-**Current status:** working local software plus trained research models on a real 1,240-row KSE-100 snapshot. Rolling retraining, additional price/volume features and Brent comparisons have been evaluated; no reliable market advantage or high-accuracy claim is established. The research models are not approved production models. The production app shows an empty state; no hosted deployment or prospective performance is verified. See [the real-data model work](docs/MODEL_RESEARCH_2026-09-20.md).
+**Current status:** phase-one daily experimental KSE-100 index forecasts connect the [dashboard](https://ks-100.vercel.app/) to a dedicated GitHub data branch. The scheduled job fetches closing data, trains the research model and publishes one/five-session probabilities with stale-data warnings and a forward outcome record. See [live-feed operation](docs/LIVE_RESEARCH.md). Historical model comparisons have not established a reliable forecasting advantage; probabilities are not validated accuracy. Individual-stock forecasts remain outside this phase. See [model research](docs/MODEL_RESEARCH_2026-09-20.md).
 
 See [progress and evidence](PROGRESS.md), [source audit](docs/SOURCE_AUDIT.md), [evaluation protocol](docs/EVALUATION.md), [model card](docs/MODEL_CARD.md) and [operations runbook](docs/RUNBOOK.md).
 

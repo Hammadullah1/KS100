@@ -1,0 +1,26 @@
+import {pkTime,probability} from './data';
+import {liveState,type LiveLoaded} from './live';
+
+export function LiveOverview({loaded,horizon,setHorizon,now}:{loaded:LiveLoaded;horizon:number;setHorizon:(h:number)=>void;now:number}){
+ const f=loaded.feed.forecasts.find(f=>f.horizon===horizon)!;
+ const outcomes=loaded.feed.history.filter(f=>f.horizon===horizon&&f.outcome);
+ const correct=outcomes.filter(f=>f.outcome?.correct).length;
+ return <>
+  <div className="overview-heading"><div className="page-title"><p className="eyebrow">Pakistan · Daily index research</p><h1>KSE-100 market outlook</h1><p>Experimental estimates from actual closing data. No proven forecasting advantage.</p></div><div className="segmented" role="group" aria-label="Forecast horizon">{[1,5].map(h=><button key={h} aria-pressed={h===horizon} onClick={()=>setHorizon(h)}>{h} session{h===5?'s':''}</button>)}</div></div>
+  <div className="outlook-grid"><section className="forecast-panel" aria-labelledby="live-title">
+   <div className="panel-top"><h2 id="live-title">The next {horizon===1?'session':'5 sessions'}</h2><span className="label">RESEARCH PREVIEW</span></div>
+   <div className="probability-pair"><div><p>Up</p><strong className="numeric">{probability(f.p_up)}</strong><small>Estimated probability</small></div><div><p>Down or unchanged</p><strong className="numeric">{probability(f.p_not_up)}</strong><small>Includes an unchanged close</small></div></div>
+   <div className="probability-bar" role="img" aria-label={`Up ${probability(f.p_up)}; down or unchanged ${probability(f.p_not_up)}`}><span style={{width:`${f.p_up*100}%`}}/></div>
+   <div className="signal"><span className="status-dot" aria-hidden="true"/><div><strong>{liveState(loaded,now)}</strong><p>No buy or sell signal has been validated. Estimated probability is not measured accuracy.</p><p>This forecast covers the index, not its 100 individual stocks.</p>{loaded.error&&<p>{loaded.error}</p>}</div></div>
+   <dl className="forecast-dates"><div><dt>Reference close date</dt><dd>{f.reference_session}</dd></div><div><dt>Forecast period</dt><dd>Next {horizon} recorded closing session{horizon>1?'s':''}</dd></div></dl>
+  </section><aside className="research-note"><p className="eyebrow">Compare with a simple baseline</p><h2>Evidence grows<br/>one session at a time.</h2><p>Recent up-frequency baseline: <strong>{probability(f.baseline_up)}</strong></p><div className="note-rule"/><p className="note-small">Model: logistic regression blended with recent direction frequency.</p></aside></div>
+  <section className="timing-strip" aria-label="Update information"><div><span>Prediction issued</span><strong>{pkTime(f.issued_at)}</strong></div><div><span>Expected update by</span><strong>{pkTime(f.update_due_at)}</strong></div><div><span>Feed last checked</span><strong>{pkTime(loaded.feed.generated_at)}</strong></div></section>
+  <section className="reading-guide"><div><span className="guide-number">01</span><h3>Automatic daily updates</h3><p>GitHub checks closing data at 18:47 and 19:47 Pakistan time on weekdays. Runs may be delayed. The app labels missed updates.</p></div><div><span className="guide-number">02</span><h3>Forward observation</h3><p>{outcomes.length?`${correct} correct of ${outcomes.length} completed forecasts. ${outcomes.length<20?'Too few outcomes to estimate reliability.':'Descriptive results only; five-session outcomes overlap.'}`:'No completed forward outcomes yet. Accuracy will be measured after predictions mature.'}</p></div><div><span className="guide-number">03</span><h3>Known limits</h3><p>Trading holidays and index return basis remain under review. The update deadline is a weekday estimate. Source corrections can affect research results.</p><a href="https://dps.psx.com.pk/" target="_blank" rel="noreferrer">PSX source ↗</a></div></section>
+ </>;
+}
+
+export function LiveEvidence({loaded,horizon}:{loaded:LiveLoaded;horizon:number}){
+ const history=loaded.feed.history.filter(f=>f.horizon===horizon).slice().reverse();
+ const matured=history.filter(f=>f.outcome);
+ return <><div className="page-title"><p className="eyebrow">Forward research record</p><h1>Evidence before conviction</h1><p>Issued estimates are saved before their outcomes. This model has no demonstrated forecasting advantage.</p></div><div className="quiet-box"><p>{matured.length?`${matured.filter(f=>f.outcome?.correct).length} correct of ${matured.length} completed forecasts.`:'No completed forward outcomes yet.'} {matured.length<20?'Too few outcomes to estimate reliability.':'Five-session outcomes overlap; these are descriptive results.'}</p><p><a href="https://github.com/Hammadullah1/KS100/blob/main/docs/MODEL_RESEARCH_2026-09-20.md" target="_blank" rel="noreferrer">Read the historical model comparisons ↗</a></p></div><section className="history"><h2>Issued research estimates</h2><div className="table-wrap"><table><thead><tr><th>Reference</th><th>Issued</th><th>Up</th><th>Baseline up</th><th>Outcome</th></tr></thead><tbody>{history.map(f=><tr key={f.reference_session}><td>{f.reference_session}</td><td>{pkTime(f.issued_at)}</td><td>{probability(f.p_up)}</td><td>{probability(f.baseline_up)}</td><td>{f.outcome?`${f.outcome.up?'Up':'Down or unchanged'} · ${f.outcome.correct?'Correct':'Incorrect'}`:'Awaiting outcome'}</td></tr>)}</tbody></table></div></section></>;
+}

@@ -1,0 +1,48 @@
+name: Daily experimental index forecasts
+on:
+  schedule:
+    - cron: '47 13,14 * * 1-5'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/live-research.yml'
+      - 'src/psx_pipeline/live_research.py'
+permissions:
+  contents: write
+concurrency:
+  group: experimental-forecast-publication
+  cancel-in-progress: false
+jobs:
+  forecast:
+    if: github.repository == 'Hammadullah1/KS100'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: forecast-data
+          path: state/feed
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.10'
+      - uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4
+        with:
+          version: '0.11.8'
+          enable-cache: true
+      - run: uv sync --locked
+      - name: Fetch actual closes and produce research probabilities
+        run: uv run python -m psx_pipeline.live_research --previous state/feed/latest.json --output state/feed/latest.json
+      - name: Publish only derived forecasts
+        working-directory: state/feed
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add latest.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Update experimental index forecasts'
+            git push origin HEAD:forecast-data
+          fi

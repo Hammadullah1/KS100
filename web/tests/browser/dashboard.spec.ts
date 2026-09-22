@@ -1,5 +1,19 @@
 import {test,expect} from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+test.beforeEach(async({page})=>{await page.route('https://raw.githubusercontent.com/**',route=>route.abort());});
+test('daily research probabilities display with evidence warnings',async({page})=>{
+ const issued=new Date().toISOString();const due=new Date(Date.now()+86400000).toISOString();
+ const estimate={horizon:1,reference_session:issued.slice(0,10),issued_at:issued,update_due_at:due,p_up:.57,p_not_up:.43,baseline_up:.5,model_version:'research-browser-test',reference_hash:'test',outcome:null};
+ const feed={schema_version:'research-live-v1',mode:'experimental',instrument:'KSE100',generated_at:issued,reference_session:estimate.reference_session,source_url:'https://dps.psx.com.pk/',model_name:'research',validation:'No demonstrated forecasting advantage',calendar_status:'unverified',forecast_basis:'recorded sessions',forecasts:[estimate,{...estimate,horizon:5}],history:[estimate,{...estimate,horizon:5}]};
+ await page.route('https://raw.githubusercontent.com/**',route=>route.fulfill({body:JSON.stringify(feed),contentType:'application/json'}));
+ await page.setViewportSize({width:393,height:850});await page.goto('/');
+ await expect(page.getByText('57.0%',{exact:true})).toBeVisible();
+ await expect(page.getByText('Daily research estimate — not a validated signal',{exact:true})).toBeVisible();
+ await expect(page.getByText('This forecast covers the index, not its 100 individual stocks.')).toBeVisible();
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+ const result=await new AxeBuilder({page}).analyze();expect(result.violations).toEqual([]);
+ await page.screenshot({path:'test-results/live-research-393.png',fullPage:true});
+});
 for(const width of [320,360,393]){
  test('mobile empty dashboard '+width,async({page})=>{
   await page.setViewportSize({width,height:850});await page.goto('/');

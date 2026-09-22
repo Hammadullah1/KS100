@@ -1,5 +1,6 @@
 import {render,screen,fireEvent} from '@testing-library/react';
 import {vi,it,expect} from 'vitest';
+vi.mock('../src/live',async()=>{const actual=await vi.importActual('../src/live');return {...actual,loadLive:vi.fn().mockRejectedValue(new Error('No research feed'))};});
 vi.mock('../src/data',async()=>{const actual=await vi.importActual('../src/data');return {...actual,loadBundle:vi.fn().mockRejectedValue(new Error('No publication'))};});
 import {App} from '../src/App';
 it('renders honest empty states and working navigation',async()=>{
